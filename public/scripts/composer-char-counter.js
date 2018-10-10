@@ -1,9 +1,6 @@
 
 $(document).ready(function() {
-  console.log("connected");
-
-
-
+//  console.log("connected");
 
 $('.new-tweet textarea').bind("keyup", function(event) {
   let counter = this.value.length;

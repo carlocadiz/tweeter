@@ -77,13 +77,12 @@ footer span{
   margin-top: 10px;
 }
 
-footer ion-icon:hover + footer ion-icon{
-  display : visible;
+footer ion-icon:hover {
 }
 
 footer ion-icon{
 
-  display :none;
+  display : i;
   float: right;
   margin-right: 2em;
 }
