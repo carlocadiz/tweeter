@@ -1,0 +1,35 @@
+#tweet-container article{
+  background-color: #eee;
+  width: 390px;
+  height: 250px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 15px;
+  bottom: 40px;
+  margin: auto;
+}
+
+.icon {
+   width: 390px;
+   height: 80px;
+   border-bottom: 1px solid black;
+}
+
+.tweet{
+   width: 390px;
+   height: 100px;
+   background-color: white:;
+
+
+}
+
+.bottom{
+  width: 390px;
+  height: 50px;
+  background-color: white;
+  bottom : 0;
+  border-width: 1px;
+  border-color: grey;
+  border-radius: 15px;
+}
