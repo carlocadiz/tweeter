@@ -7,16 +7,17 @@
   border-style: solid;
   border-width: 1px;
   border-color: grey;
-  border-radius: 15px;
+  border-radius: 10px;
   bottom: 40px;
   margin: auto;
 
 }
 
-h2{
+.new-tweet h2{
   border-bottom: 1px solid black;
   margin-left: 3%;
   margin-right: 3%;
+
 }
 
 textarea{
@@ -24,10 +25,10 @@ textarea{
   display: block;
   margin-left: .5em;
   margin-right: .5em;
-  width: 95%;
-
-
+  width: 96%;
+  padding: 5px;
 }
+
 input {
   margin-top: 1em;
   margin-left: 3%;

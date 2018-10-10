@@ -19,6 +19,7 @@ body {
     color: #244751;
     background-color: #eee;
 
+
 }
 
  .container {
@@ -26,10 +27,11 @@ body {
   background-color: white;
   width: 450px;
   margin: auto;
-
+  padding-bottom: 1000px;
 
 
 }
+/*
 #tweet-container{
   background-color: white;
   width: 450px;
@@ -38,7 +40,7 @@ body {
   height: 300px;
 
 }
-
+*/
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
