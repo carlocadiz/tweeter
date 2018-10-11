@@ -83,15 +83,12 @@ function renderTweets(tweets) {
       var $tweet = createTweetElement(tweet);
       $('#tweet-container').prepend($tweet);
    });
-
 }
 
 
    $( ".compose" ).click(function() {
       $( ".new-tweet" ).slideToggle( "slow" );
       $('textarea').focus();
-
-
 });
 
 
