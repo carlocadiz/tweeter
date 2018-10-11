@@ -87,8 +87,11 @@ function renderTweets(tweets) {
 }
 
 
-  $( ".compose" ).click(function() {
-  $( ".new-tweet" ).slideToggle( "slow" );
+   $( ".compose" ).click(function() {
+      $( ".new-tweet" ).slideToggle( "slow" );
+      $('textarea').focus();
+
+
 });
 
 
