@@ -7,9 +7,9 @@ $(document).ready(function() {
   $(this).closest('.new-tweet').find('#counter').text(140 - counter);
   if (counter > 140){
     $('#counter').css("color","red");
-  } else {
+   } else {
       $('#counter').css("color","black");
-}
+  }
 
-});
+  });
 });

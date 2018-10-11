@@ -12,18 +12,40 @@ $( 'form').submit( function (event) {
 //$('.new-tweet textarea').on("keyup", function(event) {
 
   event.preventDefault();
-  textValue = $(this).find('textarea').val().length;
-  if (textValue === 0 || textValue === null){
+
+  textCount = $(this).find('textarea').val().length;
+  if (textCount === 0 || textCount === null){
    alert("NO TWEET TYPED")
-  } else if ( textValue > 140) {
+  } else if ( textCount > 140) {
       alert("MESSAGE TOO LONG");
   } else {
+
+   let safe = $('textarea').val();
+ //  console.log(safe);
+
+//  $("textarea").val(safe);
+
+  const safeHTML = escape($('textarea').val());
+  $("textarea").val(safeHTML);
+
+  console.log(safeHTML);
+
    $.post( "/tweets", $( this ).serialize() );
+
+
    $(this).trigger('reset');
+
+
    $('#counter').text(140);
    loadTweets();
  }
 });
+
+function escape(str) {
+  let textarea = document.createElement('textarea');
+  textarea.appendChild(document.createTextNode(str));
+  return textarea.innerHTML;
+}
 
 function loadTweets(){ //  $.get("/tweets")
    $.getJSON('/tweets').then( data => {
@@ -41,7 +63,7 @@ function createTweetElement(tweet) {
             <h3 name="user">${tweet.user.name}</h3>  <h4 name="handle">${tweet.user.handle}</h4>
            </header>
            <article>
-              <textarea readonly> ${tweet.content.text}</textarea>
+               ${tweet.content.text}
            </article>
            <footer>
               <span>${days} days ago</span>

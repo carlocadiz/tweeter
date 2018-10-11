@@ -1,16 +1,4 @@
-/*
-#tweet-container {
-  background-color: white;
-  width: 390px;
-  height: 250px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: black;
-  bottom: 40px;
-  margin: auto;
-  margin-top: 1em;
-}
-*/
+
 #tweet-container section{
   background-color: white;
   width: 390px;
@@ -18,14 +6,17 @@
   border-style: solid;
   border-width: 1px;
   border-color: black;
+  border-radius: 5px;
   bottom: 40px;
   margin: auto;
   margin-top: 1em;
   opacity: 0.6;
+
 }
 
-  #tweet-container section:hover{
+  #tweet-container section:hover {
   opacity : 1;
+  display : visible;
 }
 
  #tweet-container header {
@@ -60,10 +51,8 @@ article {
 
    height: 100px;
    background-color: white;
-   padding: 25px 0;
-}
-article textarea {
-  size : 100%;
+   padding: 10px 10px;
+   word-wrap: break-word;
 
 }
 
@@ -77,15 +66,18 @@ footer span{
   margin-top: 10px;
 }
 
-footer ion-icon:hover {
+#tweet-container section:hover footer ion-icon{
+
+  display :inline;
 }
 
 footer ion-icon{
 
-  display : i;
+  display : none;
   float: right;
   margin-right: 2em;
 }
+
 footer ion-icon:hover{
-  visibility: visible;
+  display: inline;
 }
