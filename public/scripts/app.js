@@ -21,9 +21,7 @@ $( 'form').submit( function (event) {
   } else {
 
    let safe = $('textarea').val();
- //  console.log(safe);
 
-//  $("textarea").val(safe);
 
   const safeHTML = escape($('textarea').val());
   $("textarea").val(safeHTML);
@@ -42,9 +40,9 @@ $( 'form').submit( function (event) {
 });
 
 function escape(str) {
-  let textarea = document.createElement('textarea');
-  textarea.appendChild(document.createTextNode(str));
-  return textarea.innerHTML;
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 }
 
 function loadTweets(){ //  $.get("/tweets")
@@ -87,6 +85,11 @@ function renderTweets(tweets) {
    });
 
 }
+
+
+  $( ".compose" ).click(function() {
+  $( ".new-tweet" ).slideToggle( "slow" );
+});
 
 
 
