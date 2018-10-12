@@ -2,49 +2,6 @@
 
 $(document).ready(function() {
 
-// Function call to load the persisted tweets on the database
-
-  loadTweets();
-
-
-// Event listener for the new tweet form. When tweet is submitted, default behaviour is halted in order to
-// process our submit request. Error handling is peformed on value of textarea. Ajax post request is sent to
-// '/tweets'.
-
-  $( 'form').submit( function (event) {
-    event.preventDefault();
-
-    $('.error').hide();
-
-    textCount = $(this).find('textarea').val().length;
-    if (textCount === 0 || textCount === null){
-      $('.error').fadeTo(200,1);
-      $('.error').text('NO TWEET TYPED');
-    } else if ( textCount > 140) {
-        $('.error').fadeTo(200,1);
-        $('.error').text('TWEET TOO LONG');
-    } else {
-      //  let safe = $('textarea').val();
-        // The textarea value is sent to a function to handle XSS.
-        const safeHTML = escapeHTML($('textarea').val());
-        $("textarea").val(safeHTML);
-
-        // Ajax post request
-        $.post( "/tweets", $( this ).serialize() );
-
-        // form is reset. Counter is reset to 140 and loadTweets() function is called to reload the new tweet.
-        $(this).trigger('reset');
-        $('#counter').text(140);
-        loadTweets();
-     }
-  });
-
- // Event handler for compose button. When clicked, the new-tweet container will slide up and down with subsequent
- // clicks.
-    $( ".compose" ).click(function() {
-      $( ".new-tweet" ).slideToggle( "slow" );
-      $('textarea').focus();
-   });
 
 // Function to escape text from textarea
 function escapeHTML(str) {
@@ -100,7 +57,6 @@ function getTimeAgo(dateCreated){
 
   let numberOfDays = parseInt((Date.now() - dateCreated) / (1000*60*60*24));
   let numberOfHours = parseInt((Date.now() - dateCreated) / (1000*60*60));
-  console.log(numberOfDays);
 
   if (numberOfDays > 0 ){
     if(numberOfDays > 1){
@@ -116,5 +72,48 @@ function getTimeAgo(dateCreated){
     }
   }
 }
+
+// Event listener for the new tweet form. When tweet is submitted, default behaviour is halted in order to
+// process our submit request. Error handling is peformed on value of textarea. Ajax post request is sent to
+// '/tweets'.
+
+  $( 'form').submit( function (event) {
+    event.preventDefault();
+
+    $('.error').hide();
+
+    textCount = $(this).find('textarea').val().length;
+    if (textCount === 0 || textCount === null){
+      $('.error').fadeTo(200,1);
+      $('.error').text('NO TWEET TYPED');
+    } else if ( textCount > 140) {
+        $('.error').fadeTo(200,1);
+        $('.error').text('TWEET TOO LONG');
+    } else {
+      //  let safe = $('textarea').val();
+        // The textarea value is sent to a function to handle XSS.
+        const safeHTML = escapeHTML($('textarea').val());
+        $("textarea").val(safeHTML);
+
+        // Ajax post request
+        $.post( "/tweets", $( this ).serialize() );
+
+        // form is reset. Counter is reset to 140 and loadTweets() function is called to reload the new tweet.
+        $(this).trigger('reset');
+        $('#counter').text(140);
+        loadTweets();
+     }
+  });
+
+ // Event handler for compose button. When clicked, the new-tweet container will slide up and down with subsequent
+ // clicks.
+    $( ".compose" ).click(function() {
+      $( ".new-tweet" ).slideToggle( "slow" );
+      $('textarea').focus();
+   });
+
+// Function call to load the persisted tweets on the database
+
+  loadTweets();
 
 });

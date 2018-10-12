@@ -20,8 +20,7 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   }
   console.log("loaded database");
 
-// function getTweets(callback) {
-//   db.collection("tweets").find().toArray(callback);
+
 //// The in-memory database of tweets. It's a basic object with an array in it.
 //const db = require("./lib/in-memory-db");
 
@@ -43,7 +42,6 @@ const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 
 app.use("/tweets", tweetsRoutes);
 
-//db.close();
   });
   app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
