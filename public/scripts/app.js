@@ -6,38 +6,34 @@
 
 
 $(document).ready(function() {
-let textValue = 0;
 
-$( 'form').submit( function (event) {
-//$('.new-tweet textarea').on("keyup", function(event) {
 
-  event.preventDefault();
 
-  textCount = $(this).find('textarea').val().length;
-  if (textCount === 0 || textCount === null){
-   alert("NO TWEET TYPED")
-  } else if ( textCount > 140) {
+  let textValue = 0;
+
+  $( 'form').submit( function (event) {
+    event.preventDefault();
+
+    textCount = $(this).find('textarea').val().length;
+    if (textCount === 0 || textCount === null){
+      alert("NO TWEET TYPED")
+    } else if ( textCount > 140) {
       alert("MESSAGE TOO LONG");
-  } else {
-
-   let safe = $('textarea').val();
+    } else {
 
 
-  const safeHTML = escape($('textarea').val());
-  $("textarea").val(safeHTML);
-
-  console.log(safeHTML);
-
-   $.post( "/tweets", $( this ).serialize() );
+    let safe = $('textarea').val();
+    const safeHTML = escape($('textarea').val());
+    $("textarea").val(safeHTML);
 
 
-   $(this).trigger('reset');
+    $.post( "/tweets", $( this ).serialize() );
+      $(this).trigger('reset');
+      $('#counter').text(140);
+      loadTweets();
+    }
+  });
 
-
-   $('#counter').text(140);
-   loadTweets();
- }
-});
 
 function escape(str) {
   let div = document.createElement('div');
@@ -45,7 +41,7 @@ function escape(str) {
   return div.innerHTML;
 }
 
-function loadTweets(){ //  $.get("/tweets")
+function loadTweets(){
    $.getJSON('/tweets').then( data => {
      renderTweets(data);
    })
@@ -53,7 +49,7 @@ function loadTweets(){ //  $.get("/tweets")
 
 function createTweetElement(tweet) {
   //let $tweet = $('#tweet-container header h4').addClass);
-   var days = parseInt( tweet.created_at / (1000*60*60*24));
+   var days = parseInt((Date.now() - tweet.created_at) / (1000*60*60*24));
    var newScript = `
            <section>
             <header>
@@ -76,6 +72,7 @@ function createTweetElement(tweet) {
 
 
 function renderTweets(tweets) {
+   $('#tweet-container').empty();
   // loops through tweets
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets containe
@@ -85,12 +82,10 @@ function renderTweets(tweets) {
    });
 }
 
-
    $( ".compose" ).click(function() {
       $( ".new-tweet" ).slideToggle( "slow" );
       $('textarea').focus();
-});
-
+   });
 
 
 loadTweets();

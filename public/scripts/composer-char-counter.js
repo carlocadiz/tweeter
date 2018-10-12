@@ -2,13 +2,19 @@
 $(document).ready(function() {
 //  console.log("connected");
 
+
   $('.new-tweet textarea').on("keyup", function(event) {
+
+  let $text = $(this).closest('.new-tweet').find('#counter');
   let counter = this.value.length;
-  $(this).closest('.new-tweet').find('#counter').text(140 - counter);
+  $($text).text(140 - counter);
+
+ // $(this).closest('.new-tweet').find('#counter').text(140 - counter);
   if (counter > 140){
-    $('#counter').css("color","red");
+  //  $('#counter').css("color","red");
+  $($text).css("color","red");
    } else {
-      $('#counter').css("color","black");
+      $($text).css("color","black");
   }
 
   });
