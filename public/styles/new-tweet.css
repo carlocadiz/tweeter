@@ -1,6 +1,4 @@
  .new-tweet {
-
-
   background-color: #eee;
   width: 390px;
   height: 175px;
@@ -11,7 +9,6 @@
   bottom: 40px;
   margin: auto;
   margin-top: 20px;
-
 }
 
 .new-tweet h2{

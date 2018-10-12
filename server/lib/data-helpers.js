@@ -12,7 +12,7 @@ module.exports = function makeDataHelpers(db) {
      //simulateDelay(() => {
         db.collection('tweets').insertOne(newTweet);
         callback(null, true);
-   //   });
+    //  });
     },
 
 
