@@ -14,11 +14,21 @@ $(document).ready(function() {
   $( 'form').submit( function (event) {
     event.preventDefault();
 
+//     $('.error').text('');
+     $('.error').fadeTo(200,0);
+
     textCount = $(this).find('textarea').val().length;
     if (textCount === 0 || textCount === null){
-      alert("NO TWEET TYPED")
-    } else if ( textCount > 140) {
-      alert("MESSAGE TOO LONG");
+
+      $('.error').fadeTo(200,1);
+      //  $('.error').slideDown("slow");
+$('.error').text('NO TWEET TYPED');
+
+;    } else if ( textCount > 140) {
+        $('.error').fadeTo(400,1);
+        $('.error').text('TWEET TOO LONG');
+
+
     } else {
 
 
@@ -72,6 +82,7 @@ function createTweetElement(tweet) {
 
 
 function renderTweets(tweets) {
+
    $('#tweet-container').empty();
   // loops through tweets
     // calls createTweetElement for each tweet

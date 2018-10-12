@@ -73,7 +73,7 @@ footer span{
 
 footer ion-icon{
 
-  display : visible;
+  display : none;
   float: right;
   margin-right: 2em;
 }
